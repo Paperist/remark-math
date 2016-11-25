@@ -1,5 +1,7 @@
 
-# Created by https://www.gitignore.io/api/node,visualstudiocode
+# Created by https://www.gitignore.io/api/vscode,node
+
+#!! ERROR: vscode is undefined. Use list command to see defined gitignore types !!#
 
 ### Node ###
 # Logs
@@ -50,12 +52,3 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
-# Build
-lib
-
-
-### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
