@@ -9,6 +9,11 @@
     "rimraf": "^2.5.4",
     "typescript": "^2.0.10"
   },
+  "keywords": [
+    "markdown",
+    "mathjax",
+    "remark"
+  ],
   "license": "MIT",
   "main": "index.js",
   "scripts": {
