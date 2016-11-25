@@ -1,0 +1,23 @@
+{
+  "name": "remark-mathjax",
+  "description": "wooorm/remark plugin for mathjax",
+  "version": "0.0.0",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.48",
+    "cpx": "^1.5.0",
+    "npm-run-all": "^3.1.1",
+    "rimraf": "^2.5.4",
+    "typescript": "^2.0.10"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm-run-all clean -p build:*",
+    "build:cp": "cpx 'src/**/!(*.ts)' lib",
+    "build:ts": "tsc",
+    "clean": "rimraf lib/*",
+    "commit": "bash ./commit.sh"
+  }
+}
