@@ -14,7 +14,7 @@
 ## Install
 
 ```
-npm i remark 3846masa/remark-mathjax#build
+npm i remark @paperist/remark-mathjax
 ```
 
 ## Usage
@@ -22,19 +22,9 @@ npm i remark 3846masa/remark-mathjax#build
 ```js
 const remark = require('remark');
 const mathjax = require('remark-mathjax');
-const crossref = require('remark-crossref');
-const latex = require('remark-latex');
 
-remark()
-.use(mathjax)
-.use(crossref)
-.use(latex)
-.process(markdown, (err, vfile) => {
-  if (err) {
-    console.error(err);
-  }
-  console.log(vfile);
-});
+const ast = remark().use(mathjax).parse(markdown);
+console.dir(ast, { depth: null });
 ```
 
 ## Contribute
