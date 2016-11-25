@@ -110,7 +110,6 @@ function tokenizeInlineMathjax (
   let mathjax = '';
   let char = '';
   let idx = 0;
-  console.log(value);
 
   char = value.charAt(idx++);
   const wrapType =
