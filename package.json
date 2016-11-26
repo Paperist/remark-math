@@ -15,6 +15,13 @@
     "mathjax",
     "remark"
   ],
+  "files": [
+    "package.json",
+    "README",
+    "LICENSE",
+    "lib",
+    "index.js"
+  ],
   "license": "MIT",
   "main": "index.js",
   "scripts": {
