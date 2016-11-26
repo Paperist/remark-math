@@ -18,8 +18,7 @@ const C_CLOSE_PARENTHESIS = ')';
  *   tokenizeBlockMathjax(eat, '$$ x + y = 1 $$');
  *   tokenizeBlockMathjax(eat, '\[ x + y = 1 \]');
  */
-function tokenizeBlockMathjax (
-  this: any,
+export function tokenizeBlockMathjax (
   eat: any,
   value: string,
   silent: boolean = false,
@@ -64,14 +63,14 @@ function tokenizeBlockMathjax (
       }
     }
 
-    if (wrapType === C_OPEN_BRACKET && char === C_ESCAPE) {
-      const char = value.charAt(++idx);
+    if (char === C_ESCAPE) {
+      mathjax += char;
+      char = value.charAt(++idx);
+      content += char;
 
-      if (char === C_CLOSE_BRACKET) {
-        content += char;
+      if (wrapType === C_OPEN_BRACKET && char === C_CLOSE_BRACKET) {
+        mathjax = mathjax.slice(0, -1);
         break;
-      } else {
-        idx--;
       }
     }
 
@@ -99,8 +98,7 @@ function tokenizeBlockMathjax (
  * @example
  *   tokenizeInlineMathjax(eat, '$ x + y = 1 $');
  */
-function tokenizeInlineMathjax (
-  this: any,
+export function tokenizeInlineMathjax (
   eat: any,
   value: string,
   silent: boolean = false,
@@ -136,14 +134,14 @@ function tokenizeInlineMathjax (
       break;
     }
 
-    if (wrapType === C_OPEN_PARENTHESIS && char === C_ESCAPE) {
-      const char = value.charAt(++idx);
+    if (char === C_ESCAPE) {
+      mathjax += char;
+      char = value.charAt(++idx);
+      content += char;
 
-      if (char === C_CLOSE_PARENTHESIS) {
-        content += char;
+      if (wrapType === C_OPEN_PARENTHESIS && char === C_CLOSE_PARENTHESIS) {
+        mathjax = mathjax.slice(0, -1);
         break;
-      } else {
-        idx--;
       }
     }
 
@@ -176,7 +174,7 @@ function tokenizeInlineMathjax (
  *   locateInlineMathjax('$Hoge$'); // 1
  *
  */
-function locateInlineMathjax (
+export function locateInlineMathjax (
   value: string,
   fromIndex: number,
 ) {
