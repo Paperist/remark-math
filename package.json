@@ -1,5 +1,5 @@
 {
-  "name": "remark-mathjax",
+  "name": "@paperist/remark-mathjax",
   "description": "wooorm/remark plugin for mathjax",
   "version": "0.0.0",
   "dependencies": {},
