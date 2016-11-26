@@ -1,3 +1,7 @@
+general:
+  branches:
+    ignore:
+      - build
 machine:
   node:
     version: 6
