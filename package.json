@@ -6,6 +6,7 @@
   "devDependencies": {
     "@types/node": "^6.0.48",
     "ava": "^0.17.0",
+    "greenkeeper-postpublish": "^1.0.1",
     "npm-run-all": "^3.1.1",
     "rimraf": "^2.5.4",
     "typescript": "^2.0.10"
@@ -31,6 +32,7 @@
     "test": "npm-run-all test:clean build test:build -s test:ava test:clean",
     "test:clean": "rimraf test/**/*{.js,.d.ts}",
     "test:build": "cd ./test && tsc",
-    "test:ava": "ava"
+    "test:ava": "ava",
+    "postpublish": "greenkeeper-postpublish"
   }
 }
