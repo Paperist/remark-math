@@ -188,7 +188,15 @@ export function locateInlineMathjax (
 /**
  * Attacher.
  */
-function attacher(remark: any) {
+function attacher(this: any, ...args: any[]) {
+  let remark: any;
+  if (args[0] && args[0].Parser && args[0].Compiler) {
+    // remark < v7.x
+    remark = args[0];
+  } else {
+    // remark >= v7.x
+    remark = this;
+  }
   const proto = remark.Parser.prototype;
   const blockMethods = proto.blockMethods;
   const inlineMethods = proto.inlineMethods;
