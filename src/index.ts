@@ -1,3 +1,4 @@
+import './definitions';
 import * as RemarkParse from 'remark-parse';
 
 import MathTokenizer from './MathTokenizer';

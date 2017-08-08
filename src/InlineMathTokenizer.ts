@@ -1,17 +1,7 @@
-import { UNIST } from 'unist';
 import { MDAST } from 'mdast';
 import * as RemarkParse from 'remark-parse';
 
 import { parse, ParseResult } from './peg/inlineMath';
-
-declare module 'mdast' {
-  export namespace MDAST {
-    interface InlineMath extends UNIST.Text {
-      type: 'inlineMath';
-      math: string;
-    }
-  }
-}
 
 const InlineMathLocator: RemarkParse.Locator = (value, fromIndex) => {
   let location = value.indexOf('$', fromIndex);
