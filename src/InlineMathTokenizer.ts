@@ -1,5 +1,5 @@
-import { MDAST } from 'mdast';
-import * as RemarkParse from 'remark-parse';
+import * as mdast from 'mdast';
+import RemarkParse from 'remark-parse';
 
 import { parse, ParseResult } from './peg/inlineMath';
 
@@ -11,11 +11,7 @@ const InlineMathLocator: RemarkParse.Locator = (value, fromIndex) => {
   return location;
 };
 
-const InlineMathTokenizerFunction: RemarkParse.TokenizerFunction = (
-  eat,
-  value,
-  silent
-) => {
+const InlineMathTokenizerFunction = (eat: RemarkParse.Eat, value: string, silent?: boolean) => {
   let result: ParseResult;
   try {
     result = parse(value);
@@ -27,12 +23,9 @@ const InlineMathTokenizerFunction: RemarkParse.TokenizerFunction = (
     return true;
   }
 
-  const matchStr = value.substring(
-    result.location.start.offset,
-    result.location.end.offset
-  );
+  const matchStr = value.substring(result.location.start.offset, result.location.end.offset);
 
-  const node: MDAST.InlineMath = {
+  const node: mdast.InlineMath = {
     type: 'inlineMath',
     value: matchStr,
     math: result.math,
@@ -41,14 +34,11 @@ const InlineMathTokenizerFunction: RemarkParse.TokenizerFunction = (
   return eat(matchStr)(node);
 };
 
-const InlineMathTokenizer: RemarkParse.Tokenizer = Object.assign(
-  InlineMathTokenizerFunction,
-  {
-    locator: InlineMathLocator,
-    notInBlock: true,
-    notInList: true,
-    notInLink: true,
-  }
-);
+const InlineMathTokenizer = Object.assign(InlineMathTokenizerFunction, {
+  locator: InlineMathLocator,
+  notInBlock: true,
+  notInList: true,
+  notInLink: true,
+} as Partial<RemarkParse.Tokenizer>) as RemarkParse.Tokenizer;
 
 export default InlineMathTokenizer;

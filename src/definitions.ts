@@ -1,15 +1,13 @@
-import { UNIST } from 'unist';
+import * as mdast from 'mdast';
 
 declare module 'mdast' {
-  export namespace MDAST {
-    interface Math extends UNIST.Text {
-      type: 'math';
-      math: string;
-    }
+  export interface Math extends mdast.Literal {
+    type: 'math';
+    math: string;
+  }
 
-    interface InlineMath extends UNIST.Text {
-      type: 'inlineMath';
-      math: string;
-    }
+  export interface InlineMath extends mdast.Literal {
+    type: 'inlineMath';
+    math: string;
   }
 }

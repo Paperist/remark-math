@@ -1,3 +1,3 @@
-import { UNIST } from 'unist';
+import * as unist from 'unist';
 
-export default function transformer(_tree: UNIST.Node, _vfile: any) {}
+export default function transformer(_tree: unist.Node, _vfile: any) {}
