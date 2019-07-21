@@ -22,7 +22,8 @@
     "build:peg:inlineMath": "pegjs -o ./lib/peg/inlineMath.js ./src/peg/inlineMath.pegjs",
     "build:peg:math": "pegjs -o ./lib/peg/math.js ./src/peg/math.pegjs",
     "build:tsc": "tsc",
-    "clean": "rimraf lib"
+    "clean": "rimraf lib",
+    "test": "exit 0"
   },
   "types": "lib/index.d.ts",
   "dependencies": {
